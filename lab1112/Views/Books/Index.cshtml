@@ -1,0 +1,59 @@
+﻿@model IEnumerable<lab1112.Models.Book>
+
+@{
+    ViewBag.Title = "Список книг";
+}
+
+<h2>Список книг</h2>
+
+<p>
+    @Html.ActionLink("Добавить новую книгу", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>Название</th>
+        <th>Автор</th>
+        <th>Год издания</th>
+        <th>Адрес издательства</th>
+        <th>Цена</th>
+        <th>Книготорговая фирма</th>
+        <th>Действия</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>
+                @Html.ActionLink(item.Author.FullName, "Details", "Authors", new { id = item.Author.AuthorId }, new { @class = "author-link", title = "Перейти к деталям автора" })
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.PublicationYear)</td>
+            <td>@Html.DisplayFor(modelItem => item.PublisherAddress)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Html.DisplayFor(modelItem => item.BookStore)</td>
+            <td>
+                <div class="btn-group" role="group">
+                    @Html.ActionLink("Подробности", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+
+<style>
+    .author-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+        .author-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+</style>

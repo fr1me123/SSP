@@ -1,0 +1,41 @@
+﻿@model lab1112.Models.Book
+
+@{
+    ViewBag.Title = "Удалить книгу";
+}
+
+<h2>Удалить книгу</h2>
+
+<h3>Вы уверены, что хотите удалить эту книгу?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Название книги:</dt>
+        <dd>@Html.DisplayFor(model => model.Title)</dd>
+
+        <dt>Автор:</dt>
+        <dd>@Html.DisplayFor(model => model.Author.FullName)</dd>
+
+        <dt>Год издания:</dt>
+        <dd>@Html.DisplayFor(model => model.PublicationYear)</dd>
+
+        <dt>Адрес издательства:</dt>
+        <dd>@Html.DisplayFor(model => model.PublisherAddress)</dd>
+
+        <dt>Цена:</dt>
+        <dd>@Html.DisplayFor(model => model.Price)</dd>
+
+        <dt>Книготорговая фирма:</dt>
+        <dd>@Html.DisplayFor(model => model.BookStore)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+            @Html.ActionLink("Вернуться к списку", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

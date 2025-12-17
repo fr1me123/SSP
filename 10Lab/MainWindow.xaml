@@ -1,0 +1,25 @@
+﻿<Window x:Class="_10Lab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Лабораторная работа №10 - Фигуры в WPF" Height="400" Width="500"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF77EC6E">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Лабораторная работа №10" 
+                      FontSize="24" FontWeight="Bold" 
+                      HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+            <Button Content="Задание 1 - ViewBox и Canvas" 
+                    Click="Task1_Click" 
+                    Padding="15,10" Margin="0,5" FontSize="14" Width="250"/>
+
+            <Button Content="Задание 2 - Переключатели" 
+                    Click="Task2_Click" 
+                    Padding="15,10" Margin="0,5" FontSize="14" Width="250"/>
+
+            <Button Content="Дополнительное задание" 
+                    Click="TaskExtra_Click" 
+                    Padding="15,10" Margin="0,5" FontSize="14" Width="250"/>
+        </StackPanel>
+    </Grid>
+</Window>

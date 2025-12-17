@@ -1,0 +1,39 @@
+﻿@model lab1112.Models.Author
+
+@{
+    ViewBag.Title = "Детали автора";
+}
+
+<h2>Детали автора</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Фамилия:</dt>
+        <dd>@Html.DisplayFor(model => model.LastName)</dd>
+
+        <dt>Имя:</dt>
+        <dd>@Html.DisplayFor(model => model.FirstName)</dd>
+
+        <dt>Отчество:</dt>
+        <dd>@Html.DisplayFor(model => model.MiddleName)</dd>
+
+        <dt>Полное имя:</dt>
+        <dd>@Model.FullName</dd>
+
+        <dt>Дата рождения:</dt>
+        <dd>
+            @if (Model.BirthDate.HasValue)
+            {
+                @Model.BirthDate.Value.ToString("dd.MM.yyyy")
+            }
+        </dd>
+
+        <dt>Страна:</dt>
+        <dd>@Html.DisplayFor(model => model.Country)</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.AuthorId }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Вернуться к списку", "Index", null, new { @class = "btn btn-secondary" })
+</p>

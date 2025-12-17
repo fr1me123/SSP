@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Карты городов Беларуси";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Карты городов Беларуси</h2>
+
+<div class="form-group">
+    <label for="citySelect">Выберите город:</label>
+    <select id="citySelect" class="form-control" onchange="changeMap(this.value)" style="width: 300px;">
+        <option value="">-- Выберите город --</option>
+        <option value="Minsk">Минск</option>
+        <option value="Brest">Брест</option>
+        <option value="Vitebsk">Витебск</option>
+        <option value="Grodno">Гродно</option>
+        <option value="Gomel">Гомель</option>
+        <option value="Mogilev">Могилёв</option>
+    </select>
+</div>
+
+<br />
+
+<div id="mapContainer">
+    <iframe id="cityMap"
+            width="100%"
+            height="500"
+            frameborder="0"
+            style="border: 0; border-radius: 8px;"
+            allowfullscreen="">
+    </iframe>
+</div>
+
+@section Scripts {
+    <script>
+        // Карты городов Беларуси
+        var cityMaps = {
+            'Minsk': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150475.3322718522!2d27.451567660957238!3d53.89305669809051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcfd35b1e6ad3%3A0xb61b853ddb570d9!2z0JzQuNC90YHQug!5e0!3m2!1sru!2sby!4v1576007412668!5m2!1sru!2sby',
+
+            'Brest': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d78449.31346339424!2d23.632848329964006!3d52.088084177221866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47210c0223630975%3A0x4d319ea41ff64ae9!2z0JHRgNC10YHRgg!5e0!3m2!1sru!2sby!4v1576008086154!5m2!1sru!2sby',
+
+            'Vitebsk': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150517.9088211986!2d30.218223075309055!3d53.88123104449437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d0521c52844571%3A0xcf85d14239bb73b6!2z0JzQvtCz0LjQu9GR0LI!5e0!3m2!1sru!2sby!4v1576007883514!5m2!1sru!2sby',
+
+            'Grodno': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150517.9088211986!2d23.818223075309055!3d53.68123104449437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d0521c52844571%3A0xcf85d14239bb73b6!2z0JPQvtGA0L7QtNC90L4!5e0!3m2!1sru!2sby!4v1576007883515!5m2!1sru!2sby',
+
+            'Gomel': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150517.9088211986!2d31.018223075309055!3d52.44123104449437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d0521c52844571%3A0xcf85d14239bb73b6!2z0JPQvtC80LXQuy!5e0!3m2!1sru!2sby!4v1576007883516!5m2!1sru!2sby',
+
+            'Mogilev': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d150517.9088211986!2d30.318223075309055!3d53.90123104449437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46d0521c52844571%3A0xcf85d14239bb73b6!2z0JzQvtCz0LjQu9GR0LI!5e0!3m2!1sru!2sby!4v1576007883517!5m2!1sru!2sby'
+        };
+
+        function changeMap(city) {
+            var mapFrame = document.getElementById('cityMap');
+            if (city && cityMaps[city]) {
+                mapFrame.src = cityMaps[city];
+                mapFrame.style.display = 'block';
+            } else {
+                mapFrame.style.display = 'none';
+            }
+        }
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('citySelect').value = '';
+            document.getElementById('cityMap').style.display = 'none';
+        });
+    </script>
+}

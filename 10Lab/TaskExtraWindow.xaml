@@ -1,0 +1,63 @@
+﻿<Window x:Class="_10Lab.TaskExtraWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Name 'GERMAN'" Height="400" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <Viewbox Stretch="Uniform">
+        <Grid Width="500" Height="300" Background="White">
+
+            <TextBlock Text="Name: GERMAN" 
+                      FontSize="24" FontWeight="Bold" 
+                      HorizontalAlignment="Center" VerticalAlignment="Top"
+                      Margin="0,20" Foreground="DarkBlue"/>
+
+            <Canvas Width="340" Height="180" Background="White" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <!-- Buchstabe G - с верхней горизонтальной линией -->
+                <Polyline Stroke="Red" StrokeThickness="6" StrokeLineJoin="Round"
+                         Points="20,60 60,60 60,140 20,140 20,60"/>
+                <Line X1="60" Y1="100" X2="40" Y2="100" Stroke="Red" StrokeThickness="6"/>
+                <Line X1="55" Y1="100" X2="28" Y2="100" Stroke="White" StrokeThickness="10" Canvas.Left="-66" Canvas.Top="-4" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" Width="154">
+                    <Line.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90.28"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Line.RenderTransform>
+                </Line>
+
+                <!-- Буква E -->
+                <Polyline Stroke="Green" StrokeThickness="6" StrokeLineJoin="Round"
+                         Points="80,60 80,140 130,140"/>
+                <Line X1="80" Y1="100" X2="110" Y2="100" Stroke="Green" StrokeThickness="6"/>
+                <Line X1="80" Y1="60" X2="130" Y2="60" Stroke="Green" StrokeThickness="6"/>
+
+                <!-- Буква R -->
+                <Polyline Stroke="Blue" StrokeThickness="6" StrokeLineJoin="Round"
+                         Points="150,60 150,140"/>
+                <Polyline Stroke="Blue" StrokeThickness="6" StrokeLineJoin="Round"
+                         Points="150,60 180,60 180,100 150,100 180,140"/>
+
+                <!-- Буква M -->
+                <Polyline Stroke="Orange" StrokeThickness="6" StrokeLineJoin="Round"
+                         Points="200,140 210,60 220,100 230,60 240,140"/>
+
+                <!-- Буква A -->
+                <Polyline Stroke="Purple" StrokeThickness="6" StrokeLineJoin="Round"
+                         Points="260,140 270,60 280,140"/>
+                <Line X1="265" Y1="110" X2="275" Y2="110" Stroke="Purple" StrokeThickness="4"/>
+
+                <!-- Буква N -->
+                <Polyline Stroke="Brown" StrokeThickness="6" StrokeLineJoin="Round"
+                         Points="300,140 300,60 330,140 330,60"/>
+
+            </Canvas>
+
+        </Grid>
+    </Viewbox>
+</Window>

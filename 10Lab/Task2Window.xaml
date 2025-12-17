@@ -1,0 +1,159 @@
+﻿<Window x:Class="_10Lab.Task2Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Задание 2 - Переключатели" Height="500" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+
+    <Viewbox Stretch="Uniform">
+        <Grid Width="700" Height="400" Background="White">
+
+            <!-- Заголовок -->
+            <TextBlock Text="Переключатели" 
+                      FontSize="32" FontWeight="Bold" 
+                      HorizontalAlignment="Center" VerticalAlignment="Top"
+                      Margin="0,20" Foreground="DarkBlue"/>
+
+            <!-- Контейнер для переключателей -->
+            <StackPanel Orientation="Horizontal" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Margin="0,40">
+
+                <!-- Переключатель 1 -->
+                <Viewbox Width="150" Height="150" Margin="40,0">
+                    <Grid Width="120" Height="120" x:Name="SwitchContainer1"
+                          MouseEnter="Switch_MouseEnter" 
+                          MouseLeave="Switch_MouseLeave"
+                          MouseDown="Switch_MouseDown"
+                          Cursor="Hand"
+                          Background="Transparent"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="ScaleTransform1" ScaleX="1" ScaleY="1"/>
+                                <RotateTransform x:Name="RotateTransform1" Angle="0"/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+
+                        <!-- Шестиугольник -->
+                        <Polygon Points="60,10 110,35 110,85 60,110 10,85 10,35"
+                                Fill="#FFAFFB82" Stroke="DarkBlue" StrokeThickness="2"
+                                IsHitTestVisible="False"/>
+
+                        <!-- Серый круг -->
+                        <Ellipse Width="40" Height="40" Fill="LightGray" Stroke="DarkGray" StrokeThickness="1"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                IsHitTestVisible="False"/>
+
+                        <!-- Красная стрелка -->
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center"
+                              IsHitTestVisible="False">
+                            <!-- Основание стрелки (прямоугольник) -->
+                            <Rectangle Width="6" Height="30" Fill="Red" 
+                                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                            <!-- Наконечник стрелки (треугольник) -->
+                            <Polygon Points="0,-8 4,0 -4,0" Fill="Red"
+                                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                                    Margin="0,-15,0,0"/>
+                        </Grid>
+                    </Grid>
+                </Viewbox>
+
+                <!-- Переключатель 2 -->
+                <Viewbox Width="150" Height="150" Margin="40,0">
+                    <Grid Width="120" Height="120" x:Name="SwitchContainer2"
+                          MouseEnter="Switch_MouseEnter" 
+                          MouseLeave="Switch_MouseLeave"
+                          MouseDown="Switch_MouseDown"
+                          Cursor="Hand"
+                          Background="Transparent"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="ScaleTransform2" ScaleX="1" ScaleY="1"/>
+                                <RotateTransform x:Name="RotateTransform2" Angle="0"/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+
+                        <!-- Шестиугольник -->
+                        <Polygon Points="60,10 110,35 110,85 60,110 10,85 10,35"
+                                Fill="#FF4379AB" Stroke="DarkGreen" StrokeThickness="2"
+                                IsHitTestVisible="False"/>
+
+                        <!-- Серый круг -->
+                        <Ellipse Width="40" Height="40" Fill="LightGray" Stroke="DarkGray" StrokeThickness="1"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                IsHitTestVisible="False"/>
+
+                        <!-- Красная стрелка -->
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center"
+                              IsHitTestVisible="False">
+                            <!-- Основание стрелки (прямоугольник) -->
+                            <Rectangle Width="6" Height="30" Fill="Red" 
+                                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                            <!-- Наконечник стрелки (треугольник) -->
+                            <Polygon Points="0,-8 4,0 -4,0" Fill="Red"
+                                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                                    Margin="0,-15,0,0"/>
+                        </Grid>
+                    </Grid>
+                </Viewbox>
+
+                <!-- Переключатель 3 -->
+                <Viewbox Width="150" Height="150" Margin="40,0">
+                    <Grid Width="120" Height="120" x:Name="SwitchContainer3"
+                          MouseEnter="Switch_MouseEnter" 
+                          MouseLeave="Switch_MouseLeave"
+                          MouseDown="Switch_MouseDown"
+                          Cursor="Hand"
+                          Background="Transparent"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="ScaleTransform3" ScaleX="1" ScaleY="1"/>
+                                <RotateTransform x:Name="RotateTransform3" Angle="0"/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+
+                        <!-- Шестиугольник -->
+                        <Polygon Points="60,10 110,35 110,85 60,110 10,85 10,35"
+                                Fill="#FFFFC72F" Stroke="DarkRed" StrokeThickness="2"
+                                IsHitTestVisible="False"/>
+
+                        <!-- Серый круг -->
+                        <Ellipse Width="40" Height="40" Fill="LightGray" Stroke="DarkGray" StrokeThickness="1"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                IsHitTestVisible="False"/>
+
+                        <!-- Красная стрелка -->
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center"
+                              IsHitTestVisible="False">
+                            <!-- Основание стрелки (прямоугольник) -->
+                            <Rectangle Width="6" Height="30" Fill="Red" 
+                                      HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                            <!-- Наконечник стрелки (треугольник) -->
+                            <Polygon Points="0,-8 4,0 -4,0" Fill="Red"
+                                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                                    Margin="0,-15,0,0"/>
+                        </Grid>
+                    </Grid>
+                </Viewbox>
+            </StackPanel>
+
+            <!-- Инструкция -->
+            <TextBlock Text="Наведите курсор на переключатель для увеличения. Кликните для поворота на 20°."
+                      FontSize="14" FontStyle="Italic"
+                      HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                      Margin="0,0,0,20" Foreground="DarkSlateGray" TextWrapping="Wrap"/>
+
+            <!-- Кнопка для тестирования -->
+            <Button Content="Тест: повернуть все переключатели" 
+                    Click="TestRotateAll_Click"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    Margin="0,0,0,60" Padding="10,5"/>
+        </Grid>
+    </Viewbox>
+</Window>
