@@ -1,0 +1,25 @@
+﻿<Window x:Class="_7LAB.RunningButton"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Убегающая кнопка" 
+        WindowStartupLocation="CenterScreen"
+        Width="600" Height="400"
+        Name="RunningButtonWindow">
+
+    <Canvas Background="#34495E" Name="MainCanvas">
+        <Button x:Name="RunAwayButton" Content="Нажми на меня" 
+                Width="120" Height="40" 
+                Background="#FFFF26F7" Foreground="White" FontWeight="Bold"
+                BorderBrush="#388e3c"
+                Canvas.Left="240" Canvas.Top="180">
+            <Button.RenderTransform>
+                <TranslateTransform x:Name="ButtonTransform"/>
+            </Button.RenderTransform>
+        </Button>
+
+        <Button Content="Назад" 
+                Canvas.Left="10" Canvas.Bottom="10" 
+                Width="80" Height="30" 
+                Click="Back_Click" Background="#FFE9E9E9"/>
+    </Canvas>
+</Window>

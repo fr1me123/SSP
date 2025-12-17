@@ -1,0 +1,88 @@
+﻿<Window x:Class="_8LAB.PulsarWithScale"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Пульсар с масштабированием" Height="500" Width="600">
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#220033" Offset="0"/>
+            <GradientStop Color="#000000" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- === Пульсар с анимацией === -->
+        <Ellipse Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="300"
+                 x:Name="PulsarEllipse">
+            <Ellipse.Fill>
+                <RadialGradientBrush x:Name="PulsarGradient">
+                    <GradientStop x:Name="InnerStop" Color="Red" Offset="0.0" />
+                    <GradientStop x:Name="OuterStop" Color="Yellow" Offset="1.0" />
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+
+            <Ellipse.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="PulsarAnimation" RepeatBehavior="Forever">
+                            <!-- Анимация внутреннего градиента -->
+                            <DoubleAnimation 
+                                Storyboard.TargetName="InnerStop"
+                                Storyboard.TargetProperty="Offset" 
+                                From="0" To="0.8" Duration="0:0:1" AutoReverse="True"/>
+                            <!-- Анимация внешнего градиента -->
+                            <DoubleAnimation 
+                                Storyboard.TargetName="OuterStop"
+                                Storyboard.TargetProperty="Offset" 
+                                From="1" To="1.5" Duration="0:0:1" AutoReverse="True"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Ellipse.Triggers>
+
+            <!-- Transform для масштабирования -->
+            <Ellipse.RenderTransform>
+                <ScaleTransform x:Name="PulsarScaleTransform" CenterX="150" CenterY="150"/>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+
+        <!-- === Слайдер масштабирования === -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,10">
+            <TextBlock Text="Масштаб:" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <Slider x:Name="ScaleSlider"
+                    Width="200"
+                    Minimum="0.5"
+                    Maximum="2.0"
+                    Value="1.0"
+                    ValueChanged="ScaleSlider_ValueChanged"/>
+            <TextBlock x:Name="ScaleValueText" 
+                       Foreground="White" 
+                       Margin="10,0,0,0" 
+                       VerticalAlignment="Center" 
+                       Text="1.0x"
+                       MinWidth="40"/>
+        </StackPanel>
+
+        <!-- === Кнопка назад === -->
+        <Button Grid.Row="2" 
+                x:Name="BackButton" 
+                Content="Назад" 
+                Width="90" 
+                Height="30"
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"
+                Click="BackButton_Click">
+
+            <!-- Transform для масштабирования кнопки -->
+            <Button.RenderTransform>
+                <ScaleTransform x:Name="ButtonScaleTransform"/>
+            </Button.RenderTransform>
+        </Button>
+    </Grid>
+</Window>

@@ -1,0 +1,269 @@
+﻿<Window x:Class="_8LAB.TextEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Текстовый редактор — центр (495,150)"
+        Width="1200" Height="650"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF1E1E1E">
+
+    <Window.Resources>
+        <Style x:Key="EditorBlockStyle" TargetType="Border">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="140"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Background" Value="#FFF8F8F8"/>
+            <Setter Property="BorderBrush" Value="#FF6C6C6C"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Opacity" Value="0.45"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="12" ShadowDepth="6" Opacity="0.35"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Canvas>
+
+        <!-- Кнопка Назад -->
+        <Button Content="← Назад"
+                Width="100" Height="35"
+                Canvas.Left="10" Canvas.Top="10"
+                Background="#FF505050" Foreground="White"
+                FontWeight="Bold"
+                Cursor="Hand"
+                BorderBrush="#FF808080"
+                Click="BackButton_Click"/>
+
+        <!-- ==== БЛОК 1 ==== -->
+        <Border x:Name="blk1" Style="{StaticResource EditorBlockStyle}"
+                Canvas.Left="50" Canvas.Top="320">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.94" ScaleY="0.94"/>
+                    <SkewTransform AngleY="18"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+
+            <StackPanel Margin="6">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,4">
+                    <Button Content="Копировать" Width="60" Height="22" Margin="2" Click="Copy_Click"/>
+                    <Button Content="Вырезать" Width="60" Height="22" Margin="2" Click="Cut_Click"/>
+                    <Button Content="Вставить" Width="60" Height="22" Margin="2" Click="Paste_Click"/>
+                </StackPanel>
+                <TextBox x:Name="tb1" AcceptsReturn="True" Height="70"
+                         TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                         FontSize="13" Padding="4"/>
+            </StackPanel>
+
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="GotFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" To="495" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="150" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" To="0" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" To="50" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="320" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.45" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" To="18" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="0.94" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="0.94" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+
+        <!-- ==== БЛОК 2 ==== -->
+        <Border x:Name="blk2" Style="{StaticResource EditorBlockStyle}"
+                Canvas.Left="275" Canvas.Top="410">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.96" ScaleY="0.96"/>
+                    <SkewTransform AngleY="10"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+
+            <StackPanel Margin="6">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,4">
+                    <Button Content="Копировать" Width="60" Height="22" Margin="2" Click="Copy_Click"/>
+                    <Button Content="Вырезать" Width="60" Height="22" Margin="2" Click="Cut_Click"/>
+                    <Button Content="Вставить" Width="60" Height="22" Margin="2" Click="Paste_Click"/>
+                </StackPanel>
+                <TextBox x:Name="tb2" AcceptsReturn="True" Height="70"
+                         TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                         FontSize="13" Padding="4"/>
+            </StackPanel>
+
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="GotFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" To="495" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="150" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" To="0" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" To="275" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="410" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.45" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" To="10" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="0.96" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="0.96" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+
+        <!-- ==== БЛОК 3 ==== -->
+        <Border x:Name="blk3" Style="{StaticResource EditorBlockStyle}"
+                Canvas.Left="500" Canvas.Top="460">
+            <StackPanel Margin="6">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,4">
+                    <Button Content="Копировать" Width="60" Height="22" Margin="2" Click="Copy_Click"/>
+                    <Button Content="Вырезать" Width="60" Height="22" Margin="2" Click="Cut_Click"/>
+                    <Button Content="Вставить" Width="60" Height="22" Margin="2" Click="Paste_Click"/>
+                </StackPanel>
+                <TextBox x:Name="tb3" AcceptsReturn="True" Height="70"
+                         TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                         FontSize="13" Padding="4"/>
+            </StackPanel>
+
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="GotFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="150" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="460" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.45" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+
+        <!-- ==== БЛОК 4 ==== -->
+        <Border x:Name="blk4" Style="{StaticResource EditorBlockStyle}"
+                Canvas.Left="730" Canvas.Top="450">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.96" ScaleY="0.96"/>
+                    <SkewTransform AngleY="-10"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+
+            <StackPanel Margin="6">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,4">
+                    <Button Content="Копировать" Width="60" Height="22" Margin="2" Click="Copy_Click"/>
+                    <Button Content="Вырезать" Width="60" Height="22" Margin="2" Click="Cut_Click"/>
+                    <Button Content="Вставить" Width="60" Height="22" Margin="2" Click="Paste_Click"/>
+                </StackPanel>
+                <TextBox x:Name="tb4" AcceptsReturn="True" Height="70"
+                         TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                         FontSize="13" Padding="4"/>
+            </StackPanel>
+
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="GotFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" To="495" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="150" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" To="0" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" To="730" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="450" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.45" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" To="-10" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="0.96" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="0.96" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+
+        <!-- ==== БЛОК 5 ==== -->
+        <Border x:Name="blk5" Style="{StaticResource EditorBlockStyle}"
+                Canvas.Left="960" Canvas.Top="390">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.94" ScaleY="0.94"/>
+                    <SkewTransform AngleY="-18"/>
+                </TransformGroup>
+            </Border.RenderTransform>
+
+            <StackPanel Margin="6">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,4">
+                    <Button Content="Копировать" Width="60" Height="22" Margin="2" Click="Copy_Click"/>
+                    <Button Content="Вырезать" Width="60" Height="22" Margin="2" Click="Cut_Click"/>
+                    <Button Content="Вставить" Width="60" Height="22" Margin="2" Click="Paste_Click"/>
+                </StackPanel>
+                <TextBox x:Name="tb5" AcceptsReturn="True" Height="70"
+                         TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                         FontSize="13" Padding="4"/>
+            </StackPanel>
+
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="GotFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" To="495" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="150" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" To="0" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.05" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.05" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="LostFocus">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)" To="960" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Top)" To="390" Duration="0:0:0.55"/>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.45" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[1].(SkewTransform.AngleY)" To="-18" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="0.94" Duration="0:0:0.3"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="0.94" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+        </Border>
+
+    </Canvas>
+</Window>

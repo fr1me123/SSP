@@ -1,0 +1,423 @@
+﻿<Window x:Class="_5LAB.Task2Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Задание 2 — Общие стили"
+        Width="1000" Height="650"
+        MinWidth="800" MinHeight="500"
+        KeyDown="MainWindow_KeyDown"
+        Background="White">
+
+    <Window.Resources>
+        <!-- Цветовая схема -->
+        <Color x:Key="PrimaryColor">#FF2C3E50</Color>
+        <Color x:Key="SecondaryColor">#FF3498DB</Color>
+        <Color x:Key="AccentColor">#FFE74C3C</Color>
+        <Color x:Key="SuccessColor">#FF27AE60</Color>
+        <Color x:Key="WarningColor">#FFF39C12</Color>
+        <Color x:Key="LightGray">#FFECF0F1</Color>
+        <Color x:Key="DarkGray">#FF34495E</Color>
+
+        <!-- Кисти -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+        <SolidColorBrush x:Key="SuccessBrush" Color="{StaticResource SuccessColor}"/>
+        <SolidColorBrush x:Key="WarningBrush" Color="{StaticResource WarningColor}"/>
+        <SolidColorBrush x:Key="LightGrayBrush" Color="{StaticResource LightGray}"/>
+        <SolidColorBrush x:Key="DarkGrayBrush" Color="{StaticResource DarkGray}"/>
+
+        <!-- Стиль для основных кнопок -->
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DarkGrayBrush}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SecondaryBrush}"/>
+                    <Setter Property="BorderBrush" Value="{StaticResource SecondaryBrush}"/>
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.02" ScaleY="1.02"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="{StaticResource DarkGrayBrush}"/>
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="0.98" ScaleY="0.98"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для второстепенных кнопок -->
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource LightGrayBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+            <Setter Property="BorderBrush" Value="#FFBDC3C7"/>
+        </Style>
+
+        <!-- Стиль для кнопки Назад -->
+        <Style x:Key="BackButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource WarningBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <!-- Стиль для элементов меню -->
+        <Style x:Key="MenuItemStyle" TargetType="MenuItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource SecondaryBrush}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для заголовков -->
+        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Стиль для обычного текста -->
+        <Style x:Key="BodyTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- Стиль для комбобоксов -->
+        <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="{StaticResource LightGrayBrush}"/>
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="Margin" Value="0,4"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource SecondaryBrush}"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для слайдеров -->
+        <Style x:Key="SliderStyle" TargetType="Slider">
+            <Setter Property="Margin" Value="0,8"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="22"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource SecondaryBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для радио-кнопок -->
+        <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,6"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#10000000"/>
+                    <Setter Property="Foreground" Value="{StaticResource SecondaryBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Стиль для панели инструментов -->
+        <Style x:Key="ToolBarStyle" TargetType="ToolBar">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBrush}"/>
+            <Setter Property="Padding" Value="8,4"/>
+        </Style>
+
+        <!-- Стиль для строки состояния -->
+        <Style x:Key="StatusBarStyle" TargetType="StatusBar">
+            <Setter Property="Background" Value="{StaticResource LightGrayBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource DarkGrayBrush}"/>
+            <Setter Property="BorderThickness" Value="1,0,0,0"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="11"/>
+        </Style>
+
+        <!-- Стиль для границ -->
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="{StaticResource LightGrayBrush}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="4"/>
+        </Style>
+
+        <!-- Стиль для палитры -->
+        <Style x:Key="PaletteBorderStyle" TargetType="Border" BasedOn="{StaticResource BorderStyle}">
+            <Setter Property="Background" Value="{StaticResource LightGrayBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBrush}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel Background="{Binding Background, RelativeSource={RelativeSource AncestorType=Window}}">
+
+        <!-- Меню -->
+        <Menu DockPanel.Dock="Top" Background="{StaticResource PrimaryBrush}">
+            <MenuItem Header="_Файл" Style="{StaticResource MenuItemStyle}" Foreground="White">
+                <MenuItem Header="Поменять _фон..." Name="miChangeBackground" Style="{StaticResource MenuItemStyle}" 
+                          MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave" Click="miChangeBackground_Click"/>
+                <Separator/>
+                <MenuItem Header="_Сохранить рисунок (Ctrl+S)" Name="miSave" Style="{StaticResource MenuItemStyle}" 
+                          MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave" Click="miSave_Click"/>
+                <MenuItem Header="_Выход" Name="miExit" Style="{StaticResource MenuItemStyle}" 
+                          MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave" Click="miExit_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="_Правка" Style="{StaticResource MenuItemStyle}" Foreground="White">
+                <MenuItem Header="_Отменить (Ctrl+Z)" Name="miUndo" Style="{StaticResource MenuItemStyle}" 
+                          Click="miUndo_Click" MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave"/>
+                <MenuItem Header="_Повторить (Ctrl+Y)" Name="miRedo" Style="{StaticResource MenuItemStyle}" 
+                          Click="miRedo_Click" MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave"/>
+                <Separator/>
+                <MenuItem Header="Очистить _рисунок" Name="miClear" Style="{StaticResource MenuItemStyle}" 
+                          MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave" Click="miClear_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="_Справка" Style="{StaticResource MenuItemStyle}" Foreground="White">
+                <MenuItem Header="О _разработчике" Name="miAbout" Style="{StaticResource MenuItemStyle}" 
+                          MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave" Click="miAbout_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Панель инструментов -->
+        <ToolBarTray DockPanel.Dock="Top" Background="Transparent">
+            <ToolBar Style="{StaticResource ToolBarStyle}">
+                <Button Name="tbChangeBackground" Style="{StaticResource PrimaryButtonStyle}" 
+                        Click="miChangeBackground_Click" MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🎨 "/>
+                        <TextBlock Text="Фон"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="tbUndo" Style="{StaticResource SecondaryButtonStyle}" 
+                        Click="miUndo_Click" MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="↶ "/>
+                        <TextBlock Text="Отмена"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="tbRedo" Style="{StaticResource SecondaryButtonStyle}" 
+                        Click="miRedo_Click" MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="↷ "/>
+                        <TextBlock Text="Повтор"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="tbSave" Style="{StaticResource PrimaryButtonStyle}" 
+                        Click="miSave_Click" MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="💾 "/>
+                        <TextBlock Text="Сохранить"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="tbClear" Style="{StaticResource SecondaryButtonStyle}" 
+                        Click="miClear_Click" MouseEnter="UIElement_MouseEnter" MouseLeave="UIElement_MouseLeave">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="🗑️ "/>
+                        <TextBlock Text="Очистить"/>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- Строка состояния (фиксированной высоты) -->
+        <StatusBar DockPanel.Dock="Bottom" Height="26" MinHeight="26" MaxHeight="26" Style="{StaticResource StatusBarStyle}">
+            <TextBlock Name="StatusText" Style="{StaticResource BodyTextStyle}" Margin="8,0" />
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="Готово" Margin="10,0" Style="{StaticResource BodyTextStyle}" FontWeight="SemiBold"/>
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- Основное содержимое -->
+        <Grid Background="{Binding Background, RelativeSource={RelativeSource AncestorType=Window}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Левая панель управления -->
+            <StackPanel Grid.Column="0" Margin="12" VerticalAlignment="Top">
+                <TextBlock Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,12" FontSize="16">
+                    🎨 Графический редактор
+                </TextBlock>
+
+                <!-- Выбор цвета кисти -->
+                <TextBlock Style="{StaticResource HeaderTextStyle}" Margin="0,0,0,4">Цвет кисти:</TextBlock>
+                <ComboBox Name="cbBrushColor" Style="{StaticResource ComboBoxStyle}" 
+                          SelectionChanged="cbBrushColor_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Tag="Black">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="16" Height="16" Fill="Black" Margin="2" Stroke="DarkGray" StrokeThickness="1"/>
+                            <TextBlock Text="Черный" Margin="8,0" Style="{StaticResource BodyTextStyle}"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="Red">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="16" Height="16" Fill="Red" Margin="2" Stroke="DarkGray" StrokeThickness="1"/>
+                            <TextBlock Text="Красный" Margin="8,0" Style="{StaticResource BodyTextStyle}"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="Green">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="16" Height="16" Fill="Green" Margin="2" Stroke="DarkGray" StrokeThickness="1"/>
+                            <TextBlock Text="Зеленый" Margin="8,0" Style="{StaticResource BodyTextStyle}"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="Blue">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="16" Height="16" Fill="Blue" Margin="2" Stroke="DarkGray" StrokeThickness="1"/>
+                            <TextBlock Text="Синий" Margin="8,0" Style="{StaticResource BodyTextStyle}"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="Yellow">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="16" Height="16" Fill="Yellow" Margin="2" Stroke="DarkGray" StrokeThickness="1"/>
+                            <TextBlock Text="Желтый" Margin="8,0" Style="{StaticResource BodyTextStyle}"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="Purple">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="16" Height="16" Fill="Purple" Margin="2" Stroke="DarkGray" StrokeThickness="1"/>
+                            <TextBlock Text="Пурпурный" Margin="8,0" Style="{StaticResource BodyTextStyle}"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                </ComboBox>
+
+                <!-- Размер кисти -->
+                <TextBlock Margin="0,16,0,4" Style="{StaticResource HeaderTextStyle}">
+                    Размер кисти: <TextBlock Name="tbSizeValue" Text="3" FontWeight="Bold" Foreground="{StaticResource SecondaryBrush}"/>
+                </TextBlock>
+                <Slider Name="sliderBrushSize" Style="{StaticResource SliderStyle}" 
+                        Minimum="1" Maximum="30" Value="3" ValueChanged="sliderBrushSize_ValueChanged"/>
+
+                <!-- Режим -->
+                <TextBlock Margin="0,16,0,4" Style="{StaticResource HeaderTextStyle}">Режим:</TextBlock>
+                <StackPanel Margin="0,4,0,0">
+                    <RadioButton Content="✏️ Рисование" Name="rbInk" Style="{StaticResource RadioButtonStyle}" 
+                                 Checked="rbMode_Checked" IsChecked="True"/>
+                    <RadioButton Content="🔍 Выделение/редактирование" Name="rbSelect" Style="{StaticResource RadioButtonStyle}" 
+                                 Checked="rbMode_Checked"/>
+                    <RadioButton Content="🧹 Стереть по точкам" Name="rbEraseByPoint" Style="{StaticResource RadioButtonStyle}" 
+                                 Checked="rbMode_Checked"/>
+                    <RadioButton Content="🧽 Стереть по штрихам" Name="rbEraseByStroke" Style="{StaticResource RadioButtonStyle}" 
+                                 Checked="rbMode_Checked"/>
+                </StackPanel>
+
+                <!-- Кнопки действий -->
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,8">
+                    <Button Click="miSave_Click" Style="{StaticResource PrimaryButtonStyle}" 
+                            Width="110" Margin="0,0,6,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="💾 "/>
+                            <TextBlock Text="Сохранить"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Click="miClear_Click" Style="{StaticResource SecondaryButtonStyle}" 
+                            Width="110">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🗑️ "/>
+                            <TextBlock Text="Очистить"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <!-- Кнопка Назад -->
+                <Button Content="⬅️ Назад" Style="{StaticResource BackButtonStyle}" 
+                        HorizontalAlignment="Stretch" Click="Back_Click"/>
+
+                <!-- Палитра фона -->
+                <Border Name="PaletteBorder" Style="{StaticResource PaletteBorderStyle}" 
+                        Visibility="Collapsed" Margin="0,18,0,0" Padding="8">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource HeaderTextStyle}" TextAlignment="Center" Margin="0,0,0,8">
+                            Выберите цвет фона
+                        </TextBlock>
+                        <WrapPanel Name="PaletteWrap" Margin="0,6,0,12" HorizontalAlignment="Center">
+                            <Button Background="White" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Белый"/>
+                            <Button Background="LightGray" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Светло-серый"/>
+                            <Button Background="LightBlue" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Светло-голубой"/>
+                            <Button Background="LightGreen" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Светло-зеленый"/>
+                            <Button Background="LightYellow" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Светло-желтый"/>
+                            <Button Background="LightPink" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Светло-розовый"/>
+                            <Button Background="Beige" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Бежевый"/>
+                            <Button Background="Lavender" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Лавандовый"/>
+                            <Button Background="Gainsboro" Width="36" Height="28" Margin="3" 
+                                    Style="{StaticResource SecondaryButtonStyle}" Click="PaletteColor_Click" ToolTip="Гейнсборо"/>
+                        </WrapPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Name="btnPaletteOk" Style="{StaticResource PrimaryButtonStyle}" 
+                                    Click="btnPaletteOk_Click" Width="40" Height="32" Margin="4" ToolTip="Применить фон">
+                                <TextBlock Text="✓" FontSize="14" FontWeight="Bold"/>
+                            </Button>
+                            <Button Name="btnPaletteCancel" Style="{StaticResource SecondaryButtonStyle}" 
+                                    Click="btnPaletteCancel_Click" Width="40" Height="32" Margin="4" ToolTip="Отмена">
+                                <TextBlock Text="✕" FontSize="14" FontWeight="Bold"/>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <!-- Область рисования -->
+            <Border Grid.Column="1" Margin="12" Style="{StaticResource BorderStyle}">
+                <InkCanvas Name="inkCanvas" Background="White"/>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
